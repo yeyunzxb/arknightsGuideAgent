@@ -26,7 +26,9 @@ sh start.sh
 - `start.bat --no-browser`：启动但不打开浏览器。
 - `start.bat --install-only`：只准备依赖。
 
-进入应用后，点击“配置 API Key”，填写你自己的 DeepSeek 密钥，点击“验证连接并获取模型”，选择模型并提问。也可以使用默认模型直接提问，验证连接不是强制步骤。模型列表从 DeepSeek 官方 `/models` 获取；默认预置 `deepseek-flash` 和 `deepseek-v4-pro`，模型名称会随官方服务调整。
+进入应用后，点击“配置连接”，填写你自己的 DeepSeek 密钥，点击“验证连接并获取模型”，成功后从返回的真实模型列表中选择模型并提问。未验证时不展示预设模型；修改或清空密钥会清除旧列表，需要重新验证。模型列表从 DeepSeek 官方 `/models` 获取，模型名称会随官方服务调整。
+
+页面右上角可切换深色与浅色主题，选择会保存在当前浏览器中；首次访问跟随系统外观。首页只保留问候与输入框，手机上可通过左上角菜单访问知识库和历史对话。
 
 密钥只保存在当前页面内存，不进入 localStorage、知识库或配置文件，刷新页面后需重新填写。后端仅在当前请求中使用密钥，固定请求 `https://api.deepseek.com`，不支持其他供应商或自定义代理地址。对话记录保存于浏览器 localStorage，可在侧栏逐条删除。问题、最近历史与相关文档片段会发送给 DeepSeek；本地运行不等于离线模型。
 
@@ -88,7 +90,7 @@ backend/app/schemas.py     请求结构与校验
 backend/app/knowledge.py   Markdown、元数据、切块、本地索引
 backend/app/rag.py         提示词、模型、LCEL、SSE
 backend/tests/            无付费调用的测试
-frontend/src/App.vue      对话、知识库、设置、学习界面
+frontend/src/App.vue      对话、知识库、连接设置与深浅色主题
 frontend/src/api.js       fetch 与 SSE 分片解析
 knowledge/                自己维护的知识库
 templates/                文档模板（不参与检索）
